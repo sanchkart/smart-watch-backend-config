@@ -1,6 +1,7 @@
 spring:
   zipkin:
     baseUrl: http://zipkin:9411
+  sleuth:
     sampler:
       percentage: 1
   cloud:
@@ -33,3 +34,11 @@ eureka:
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://eurekaserver:8070/eureka/
+
+logstash:
+  host: 3.136.161.26:5000
+logging:
+  config: classpath:logback-delayed.xml
+
+server:
+  port: 8081
