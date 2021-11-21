@@ -1,0 +1,35 @@
+spring:
+  zipkin:
+    baseUrl: http://zipkin:9411
+    sampler:
+      percentage: 1
+  cloud:
+    stream:
+      bindings:
+        inboundHeartRate:
+          destination: heartRecieveTopic
+          content-type: application/json
+          group: heartGroup
+      kafka:
+        binder:
+          zkNodes: kafka
+          brokers: kafka
+    loadbalancer:
+      ribbon:
+        enabled: false
+
+management:
+  endponts:
+    web:
+      exposure:
+        include: "*"
+    enabled-by-default: true
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eurekaserver:8070/eureka/
